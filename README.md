@@ -14,7 +14,7 @@ ubuntu20.04、Gazebo Classic 11、ROS-Noetic
 
 ```bash
 sudo apt-get install libgazebo11-dev	
-git clone https://github.com/Ultramarine1939-syujie/ardupilot_gazebo
+git clone https://github.com/Haris-Alsaman/ardupilot_gazebo.git
 cd ardupilot_gazebo
 mkdir build
 cd build
