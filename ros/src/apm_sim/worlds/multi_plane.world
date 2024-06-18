@@ -90,21 +90,21 @@
       <uri>model://sun</uri>
     </include>
 
-    <model name="plane1">
+    <model name="plane_cam">
       <include>
-        <uri>model://plane</uri>
+        <uri>model://plane_cam</uri>
       </include>
       <pose> 0 -1.3 0 0 0 0</pose>
     </model>
         <model name="plane2">
       <include>
-        <uri>model://plane</uri>
+        <uri>model://plane2</uri>
       </include>
       <pose> 0 0 0 0 0 0</pose>
     </model>
         <model name="plane3">
       <include>
-        <uri>model://plane</uri>
+        <uri>model://plane3</uri>
       </include>
       <pose> 0 1.3 0 0 0 0</pose>
     </model>
