@@ -4,7 +4,7 @@
   <world name="default">
     <gui>
       <camera name="user_camera">
-        <pose>0 5 1 0 0.2 -1.5707</pose>
+        <pose>0 5 1 0 0.2 0</pose>
       </camera>
       <plugin name="keyboard" filename="libKeyboardGUIPlugin.so"/>
     </gui>

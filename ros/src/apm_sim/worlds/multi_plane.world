@@ -90,11 +90,23 @@
       <uri>model://sun</uri>
     </include>
 
-    <model name="plane">
+    <model name="plane1">
+      <include>
+        <uri>model://plane</uri>
+      </include>
+      <pose> 0 -1.3 0 0 0 0</pose>
+    </model>
+        <model name="plane2">
       <include>
         <uri>model://plane</uri>
       </include>
       <pose> 0 0 0 0 0 0</pose>
+    </model>
+        <model name="plane3">
+      <include>
+        <uri>model://plane</uri>
+      </include>
+      <pose> 0 1.3 0 0 0 0</pose>
     </model>
   </world>
 </sdf>

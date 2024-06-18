@@ -1,6 +1,13 @@
-<?xml version="1.0"?> 
-<sdf version="1.5">
+<?xml version="1.0" ?>
+
+<sdf version="1.6">
   <world name="default">
+    <gui>
+      <camera name="user_camera">
+        <pose>0 5 1 0 0.2 0</pose>
+      </camera>
+      <plugin name="keyboard" filename="libKeyboardGUIPlugin.so"/>
+    </gui>
     <physics type="ode">
       <ode>
         <solver>
@@ -10,25 +17,18 @@
         </solver>
         <constraints>
           <cfm>0.0</cfm>
-          <erp>0.9</erp>
+          <erp>0.2</erp>
           <contact_max_correcting_vel>0.1</contact_max_correcting_vel>
           <contact_surface_layer>0.0</contact_surface_layer>
         </constraints>
       </ode>
-      <real_time_update_rate>1000</real_time_update_rate>
-      <max_step_size>0.0010</max_step_size>
+      <real_time_update_rate>400</real_time_update_rate>
+      <max_step_size>0.0025</max_step_size>
     </physics>
 
-    <scene>
-      <sky>
-        <clouds>
-          <speed>12</speed>
-        </clouds>
-      </sky>
-      <ambient>0.4 0.4 0.4 1</ambient>
-      <background>0.25 0.25 0.25 1</background>
-    </scene>
-
+    <include>
+      <uri>model://sun</uri>
+    </include>
 
     <model name="ground_plane">
       <static>true</static>
@@ -50,7 +50,7 @@
           </surface>
         </collision>
         <visual name="runway">
-          <pose>000 0 0.005 0 0 0</pose>
+          <pose>000 0 0.005 0 0 -1.5707</pose>
           <cast_shadows>false</cast_shadows>
           <geometry>
             <plane>
@@ -86,16 +86,12 @@
       </link>
     </model>
 
-    <include>
-      <uri>model://sun</uri>
-    </include>
-
     <model name="plane">
+    <pose>0 0 0 0 0 0</pose>
       <include>
         <uri>model://plane</uri>
+        <pose>0 0 0 0 0 0</pose>
       </include>
-      <pose> 0 0 0 0 0 0</pose>
     </model>
   </world>
 </sdf>
-
