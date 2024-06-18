@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- ArduPilot SITL environment launch script for multiple UAVs -->
+    <!-- launches Gazebo environment and MAVROS -->
+    <!-- common vehicle model and config -->
+    <arg name="vehicle" default="plane"/>
+    <arg name="world" default="$(find apm_sim)/worlds/empty.world"/>
+    
+    <!-- Gazebo sim -->
+    <include file="$(find apm_sim)/launch/multi_plane.launch">
+        <arg name="world_name" value="$(arg world)"/>
+    </include>
+
+    <!-- UAV0 -->
+    <group ns="uav0">
+        <arg name="x" default="0"/>
+        <arg name="y" default="0"/>
+        <arg name="z" default="0"/>
+        <arg name="R" default="0"/>
+        <arg name="P" default="0"/>
+        <arg name="Y" default="0"/>
+        <arg name="ID" default="0"/>
+        <arg name="fcu_url" default="udp://127.0.0.1:14550"/>
+        <arg name="gcs_url" default="udp://@127.0.0.1:14551"/>
+        <arg name="mavlink_id" value="$(eval 1 + arg('ID'))" />
+
+        <include file="$(find your_package)/launch/ardupilot_single.launch">
+            <arg name="x" value="$(arg x)"/>
+            <arg name="y" value="$(arg y)"/>
+            <arg name="z" value="$(arg z)"/>
+            <arg name="R" value="$(arg R)"/>
+            <arg name="P" value="$(arg P)"/>
+            <arg name="Y" value="$(arg Y)"/>
+            <arg name="ID" value="$(arg ID)"/>
+            <arg name="fcu_url" value="$(arg fcu_url)"/>
+            <arg name="gcs_url" value="$(arg gcs_url)"/>
+            <arg name="mavlink_id" value="$(arg mavlink_id)"/>
+        </include>
+    </group>
+
+    <!-- UAV1 -->
+    <group ns="uav1">
+        <arg name="x" default="1"/>
+        <arg name="y" default="0"/>
+        <arg name="z" default="0"/>
+        <arg name="R" default="0"/>
+        <arg name="P" default="0"/>
+        <arg name="Y" default="0"/>
+        <arg name="ID" default="1"/>
+        <arg name="fcu_url" default="udp://127.0.0.1:14560"/>
+        <arg name="gcs_url" default="udp://@127.0.0.1:14561"/>
+        <arg name="mavlink_id" value="$(eval 1 + arg('ID'))" />
+
+        <include file="$(find your_package)/launch/ardupilot_single.launch">
+            <arg name="x" value="$(arg x)"/>
+            <arg name="y" value="$(arg y)"/>
+            <arg name="z" value="$(arg z)"/>
+            <arg name="R" value="$(arg R)"/>
+            <arg name="P" value="$(arg P)"/>
+            <arg name="Y" value="$(arg Y)"/>
+            <arg name="ID" value="$(arg ID)"/>
+            <arg name="fcu_url" value="$(arg fcu_url)"/>
+            <arg name="gcs_url" value="$(arg gcs_url)"/>
+            <arg name="mavlink_id" value="$(arg mavlink_id)"/>
+        </include>
+    </group>
+
+    <!-- UAV2 -->
+    <group ns="uav2">
+        <arg name="x" default="0"/>
+        <arg name="y" default="1"/>
+        <arg name="z" default="0"/>
+        <arg name="R" default="0"/>
+        <arg name="P" default="0"/>
+        <arg name="Y" default="0"/>
+        <arg name="ID" default="2"/>
+        <arg name="fcu_url" default="udp://127.0.0.1:14570"/>
+        <arg name="gcs_url" default="udp://@127.0.0.1:14571"/>
+        <arg name="mavlink_id" value="$(eval 1 + arg('ID'))" />
+
+        <include file="$(find your_package)/launch/ardupilot_single.launch">
+            <arg name="x" value="$(arg x)"/>
+            <arg name="y" value="$(arg y)"/>
+            <arg name="z" value="$(arg z)"/>
+            <arg name="R" value="$(arg R)"/>
+            <arg name="P" value="$(arg P)"/>
+            <arg name="Y" value="$(arg Y)"/>
+            <arg name="ID" value="$(arg ID)"/>
+            <arg name="fcu_url" value="$(arg fcu_url)"/>
+            <arg name="gcs_url" value="$(arg gcs_url)"/>
+            <arg name="mavlink_id" value="$(arg mavlink_id)"/>
+        </include>
+    </group>
+</launch>
