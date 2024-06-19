@@ -1,22 +1,29 @@
 <?xml version="1.0"?>
-<sdf version="1.5">
+<sdf version="1.6">
   <model name="image_on_ground">
-    <static>true</static>
-    <link name="link">
+    <static>false</static>
+    <link name="image_link">
+    <collision name="image_collision">
+    <geometry>
+    <box>
+    <size >1.70 0.51 0.50 </size>
+    </box>
+    </geometry>
+    </collision>
       <visual name="image_visual">
         <pose>0 0 0 0 0 0</pose>
         <cast_shadows>false</cast_shadows>
         <geometry>
           <plane>
             <normal>0 0 1</normal>
-            <size>1 1</size>
+            <size>1.33 1</size>
           </plane>
         </geometry>
         <material>
           <script>
-            <uri>model://image_on_ground/materials/scripts</uri>
+            <uri>model://image_on_ground/materials/scripts/image_on_ground.material</uri>
             <uri>model://image_on_ground/materials/textures</uri>
-            <name>Haris/ImageMaterial</name>
+            <name>haris/ImageMaterial</name>
           </script>
         </material>
       </visual>

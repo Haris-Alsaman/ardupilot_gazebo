@@ -3,6 +3,7 @@
   <world name="default">
     <physics type="ode">
       <ode>
+      
         <solver>
           <type>quick</type>
           <iters>100</iters>
@@ -108,7 +109,7 @@
       </include>
       <pose> 0 1.3 0 0 0 0</pose>
     </model>
-  <model name="q_code">
+  <model name="plane4">
       <include>
       <uri>model://image_on_ground</uri>
       <!-- Adjust the pose to place the image appropriately -->
