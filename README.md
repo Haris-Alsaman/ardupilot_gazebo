@@ -1,6 +1,6 @@
 # Ardupilot Gazebo plugin
 
-This plug-in was developed by the Octan team to operate multiple fixed-wing aircraft using ROS in a virtual world that supports barcodes and cameras.
+This plug-in to operate multiple fixed-wing aircraft using ROS in a virtual world that supports barcodes and cameras.
 
 ### Requirements：
 
