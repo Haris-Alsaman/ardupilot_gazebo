@@ -1,6 +1,6 @@
 <launch>
-	<node pkg="mavros" type="mavros_node" name="mavros" required="false" clear_params="true" output="screen" respawn="true" ns="/plane1">
-		<param name="fcu_url" value="udp://127.0.0.1:14550@" />
+	<node pkg="mavros" type="mavros_node" name="mavros" required="false" clear_params="true" output="screen" respawn="true" ns="plane1">
+		<param name="fcu_url" value="udp://:14550@localhost:14555" />
 		<param name="gcs_url" value="" />
 		<param name="target_system_id" value="1" />
 		<param name="target_component_id" value="1" />
@@ -11,8 +11,8 @@
 		<rosparam command="load" file="$(find mavros)/launch/apm_config.yaml" />
 	</node>
 
-	<node pkg="mavros" type="mavros_node" name="mavros" required="false" clear_params="true" output="screen" respawn="true" ns="/plane2">
-		<param name="fcu_url" value="udp://127.0.0.1:14560@" />
+	<node pkg="mavros" type="mavros_node" name="mavros" required="false" clear_params="true" output="screen" respawn="true" ns="plane2">
+		<param name="fcu_url" value="udp://:14560@localhost:14565" />
 		<param name="gcs_url" value="" />
 		<param name="target_system_id" value="2" />
 		<param name="target_component_id" value="1" />
@@ -22,8 +22,8 @@
 		<rosparam command="load" file="$(find mavros)/launch/apm_pluginlists.yaml" />
 		<rosparam command="load" file="$(find mavros)/launch/apm_config.yaml" />
 	</node>
-	<node pkg="mavros" type="mavros_node" name="mavros" required="false" clear_params="true" output="screen" respawn="true" ns="/plane3">
-		<param name="fcu_url" value="udp://127.0.0.1:14570@" />
+	<node pkg="mavros" type="mavros_node" name="mavros" required="false" clear_params="true" output="screen" respawn="true" ns="plane3">
+		<param name="fcu_url" value="udp://:14570@localhost:14575" />
 		<param name="gcs_url" value="" />
 		<param name="target_system_id" value="3" />
 		<param name="target_component_id" value="1" />
@@ -33,4 +33,6 @@
 		<rosparam command="load" file="$(find mavros)/launch/apm_pluginlists.yaml" />
 		<rosparam command="load" file="$(find mavros)/launch/apm_config.yaml" />
 	</node>
+
+	
 </launch>
