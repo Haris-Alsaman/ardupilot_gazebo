@@ -1,9 +1,0 @@
-roscd hector_slam_launch
-sudo cp ~/sensing/slam/laser_slam/hector_slam/hector_slam.launch launch/
-sudo cp ~/sensing/slam/laser_slam/hector_slam/mapping.rviz rviz_cfg/mapping.rviz
-
-roscd hector_imu_attitude_to_tf/
-sudo cp ~/sensing/slam/laser_slam/hector_slam/hector_imu.launch launch/
-
-roscd hector_mapping/
-sudo cp ~/sensing/slam/laser_slam/hector_slam/hector_mapping.launch launch/
