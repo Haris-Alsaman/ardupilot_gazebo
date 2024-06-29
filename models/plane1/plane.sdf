@@ -127,6 +127,15 @@
         <use_parent_model_frame>1</use_parent_model_frame>
       </axis>
     </joint>
+    <include>
+      <uri>model://airspeed</uri>
+      <pose>0 0 0 0 0 0</pose>
+      <name>airspeed</name>
+    </include>
+    <joint name='airspeed_joint' type='fixed'>
+      <child>airspeed::link</child>
+      <parent>base_link</parent>
+    </joint>
     <link name='rotor_puller'>
       <pose>0.3 0 0.0 0 1.57 0</pose>
       <inertial>
