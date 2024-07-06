@@ -2,15 +2,15 @@
 
 This plug-in to operate multiple fixed-wing aircraft using ROS in a virtual world that supports barcodes and cameras.
 
-### Requirements：
+## Requirements：
 
 ubuntu20.04、Gazebo Classic 11、ROS-Noetic
 
-![log seeking](demo.jpeg "Logo Title Text 1")
+![log seeking](demo.png "Logo Title Text 1")
 
-### Setup：
+## Setup：
 
-1、Gazabo and plugin
+### Gazabo and plugin
 
 ```bash
 sudo apt-get install libgazebo11-dev	
@@ -23,53 +23,24 @@ make -j4
 sudo make install
 ```
 
-2、sources 
+#### sources 
 
 ```
 sudo vim ~/.bashrc
 
-source /usr/share/gazebo/setup.sh
 
+source /usr/share/gazebo/setup.sh
 export GAZEBO_MODEL_PATH=~/ardupilot_gazebo/models:${GAZEBO_MODEL_PATH}
 export GAZEBO_MODEL_PATH=~/ardupilot_gazebo/models_gazebo:${GAZEBO_MODEL_PATH}
 export GAZEBO_RESOURCE_PATH=~/ardupilot_gazebo/worlds:${GAZEBO_RESOURCE_PATH}
 export GAZEBO_PLUGIN_PATH=~/ardupilot_gazebo/build:${GAZEBO_PLUGIN_PATH}
+
+
+source ~/.bashrc
 ```
 
-3、with out Ros
 
-sim ArduCoptr
-
-```bash
-sim_vehicle.py -v ArduCopter -f gazebo-iris  --map --console
-```
-
-gazebo ArduCopter
-
-```bash
-gazebo --verbose iris_ardupilot.world
-```
-
-4、With ROS
-
-```bash
-
-cd ros
-catkin_make
-source devel/setup.bash
-roslaunch apm_sim iris_runway.launch
-cd ~/ardupilot/ArduCopter/ && sim_vehicle.py -v ArduCopter -f gazebo-iris --console
-or
-./startsitl
-```
-
-ros
-
-```
-roslaunch mavros apm.launch fcu_url:=udp://:14550@
-```
-
-install Mavros
+### install Mavros
 
 ```bash
 sudo apt install ros-noetic-mavros* -y 
@@ -78,26 +49,61 @@ sudo chmod +x install_geographiclib_datasets.sh
 ./install_geographiclib_datasets.sh
 ```
 
-### 
+### Make ROS 
 
-#### 
 
-**models :** Ardupilot SITL compatible models.
 
-**worlds :** Ardupilot SITL example worlds.
+### Make ROS and Run Gazebo
+```bash
+cd ardupilot_gazebo/ros/
+catkin_make  #First Time
+source devel/setup.bash  
+```
 
-**src :** source files for Gazebo - ArduPilot Plugin
+#### before run gazebo we sholud 
 
-**include :** header files for Gazebo - ArduPilot Plugin
 
-#### ROS-launch：
+#### Run Sim
+```bash
+sim_vehicle.py -v ArduPlane -f gazebo-zephyr --console  --out=127.0.0.1:14550 -I0 --sysid=1  
 
-|        Name         |         Notes         |
-| :-------------------: | :------------------: |
-| multi_plane.launch    |     multi_plane with camera   |
-|  iris_runway.launch   |  Iris on the runway |
-| iris_realsense.launch |  Iris with depth camera  |
-|   iris_lidar.launch   | Iris with four-directional radar |
-|  iris_stereo.launch   |  Iris with binocular camera  |
-| zephyr_runway.launch  |    Zephyr on the runway    |
+sim_vehicle.py -v ArduPlane -f gazebo-zephyr --console  --out=127.0.0.1:14560 -I1 --sysid=2 
+
+sim_vehicle.py -v ArduPlane -f gazebo-zephyr --console  --out=127.0.0.1:14570 -I2 --sysid=3
+```
+
+
+
+## For Make it Easier
+
+### source Ros and Scripts
+```
+sudo vim ~/.bashrc
+
+
+export PATH=$PATH:~/ardupilot_gazebo/scripts
+source ~/ardupilot_gazebo/ros/devel/setup.bash
+
+source ~/.bashrc
+```
+
+### run it from any where by one line
+
+1.terminal 
+```
+start_gazebo_multi_plane.sh
+```
+
+2.terminal
+```
+start_1_plane.sh
+```
+
+
+
+
+
+
+
+
 
