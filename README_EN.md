@@ -202,5 +202,8 @@ If this is correct, check with "cat /usr/share/gazebo/setup.sh" the variable GAZ
 ````
 sudo cp -a /usr/lib/x86_64-linux-gnu/gazebo-7.0/plugins/ /usr/lib/x86_64-linux-gnu/gazebo-7/
 ````
+mavproxy.py --master=udp:localhost:14550 --out=udp:localhost:14551 --out=udp:localhost:14552
+mavproxy.py --master=udp:localhost:14560 --out=udp:localhost:14561 --out=udp:localhost:14562
+mavproxy.py --master=udp:localhost:14570 --out=udp:localhost:14571 --out=udp:localhost:14572
 
 Path mismatch is confirmed as Gazebo's glitch. It only happens with Gazebo version 7.
