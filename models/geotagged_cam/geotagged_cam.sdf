@@ -33,7 +33,7 @@
           </clip>
         </camera>
         <always_on>1</always_on>
-        <update_rate>5</update_rate>
+        <update_rate>300</update_rate>
         <visualize>true</visualize>
         <plugin name="GstCameraPlugin" filename="libgazebo_gst_camera_plugin.so">
             <robotNamespace></robotNamespace>

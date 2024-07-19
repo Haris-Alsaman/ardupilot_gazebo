@@ -113,7 +113,7 @@
       <uri>model://image_on_ground</uri>
       <!-- Adjust the pose to place the image appropriately -->
     </include>
-    <pose>0 2.6 0 0 0 0</pose> 
+    <pose>0 5.2 0 0 0 0</pose> 
       </model>
   </world>
 </sdf>

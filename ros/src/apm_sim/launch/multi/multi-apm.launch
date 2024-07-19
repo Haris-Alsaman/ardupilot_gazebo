@@ -1,7 +1,7 @@
 <launch>
 	<node pkg="mavros" type="mavros_node" name="mavros" required="false" clear_params="true" output="screen" respawn="true" ns="plane1">
-		<param name="fcu_url" value="udp://:14550@localhost:14555" />
-		<param name="gcs_url" value="" />
+		<param name="fcu_url" value="udp://@localhost:14550" />
+		<param name="gcs_url" value="udp://@localhost:14552" />
 		<param name="target_system_id" value="1" />
 		<param name="target_component_id" value="1" />
 		<param name="fcu_protocol" value="v2.0" />
@@ -12,8 +12,8 @@
 	</node>
 
 	<node pkg="mavros" type="mavros_node" name="mavros" required="false" clear_params="true" output="screen" respawn="true" ns="plane2">
-		<param name="fcu_url" value="udp://:14560@localhost:14565" />
-		<param name="gcs_url" value="" />
+		<param name="fcu_url" value="udp://@localhost:14560" />
+		<param name="gcs_url" value="udp://@localhost:14561" />
 		<param name="target_system_id" value="2" />
 		<param name="target_component_id" value="1" />
 		<param name="fcu_protocol" value="v2.0" />
