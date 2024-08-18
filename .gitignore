@@ -3,6 +3,8 @@ Build/
 ros/devel/
 ros/.catkin_workspace
 bin/
+logs/
+ros/logs/
 lib/
 msg_gen/
 srv_gen/

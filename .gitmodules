@@ -1,9 +1,0 @@
-[submodule "ros/src/realsense_ros_gazebo"]
-	path = ros/src/realsense_ros_gazebo
-	url = https://gitee.com/ultramarine1939/realsense_ros_gazebo
-[submodule "models_gazebo"]
-	path = models_gazebo
-	url = https://github.com/Ultramarine1939-syujie/models_gazebo
-[submodule "ros/src/iq_gnc"]
-	path = ros/src/iq_gnc
-	url = https://github.com/Ultramarine1939-syujie/iq_gnc
