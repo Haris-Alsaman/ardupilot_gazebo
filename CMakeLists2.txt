@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 
-
 project(ardupilot_sitl_gazebo)
-
 
 #######################
 ## Find Dependencies ##
@@ -16,6 +14,9 @@ if("${GAZEBO_VERSION}" VERSION_LESS "7.0")
 else()
     message("Gazebo version: ${GAZEBO_VERSION}")
 endif()
+
+find_package(PkgConfig REQUIRED)
+pkg_search_module(GSTREAMER REQUIRED gstreamer-1.0)
 
 ###########
 ## Build ##
@@ -39,9 +40,9 @@ link_directories(
 set (plugins_single_header
         ArduPilotPlugin
         ArduCopterIRLockPlugin
-	ArduCopterPlugin
-        # ..
-	# ...
+        ArduCopterPlugin
+        gazebo_camera_manager_plugin
+        gazebo_airspeed_plugin
         )
 
 add_library(ArduCopterIRLockPlugin SHARED src/ArduCopterIRLockPlugin.cc)
@@ -53,6 +54,21 @@ target_link_libraries(ArduPilotPlugin ${GAZEBO_LIBRARIES})
 add_library(ArduCopterPlugin SHARED src/ArduCopterPlugin.cc)
 target_link_libraries(ArduCopterPlugin ${GAZEBO_LIBRARIES})
 
+add_library(gazebo_camera_manager_plugin SHARED src/gazebo_camera_manager_plugin.cpp)
+target_link_libraries(gazebo_camera_manager_plugin ${GAZEBO_LIBRARIES})
+
+add_library(gazebo_airspeed_plugin SHARED src/gazebo_airspeed_plugin.cpp)
+target_link_libraries(gazebo_airspeed_plugin ${GAZEBO_LIBRARIES})
+
+if (GSTREAMER_FOUND)
+    include_directories(${GSTREAMER_INCLUDE_DIRS})
+    link_libraries(${GSTREAMER_LIBRARIES})
+
+    add_library(gazebo_gst_camera_plugin SHARED src/gazebo_gst_camera_plugin.cpp)
+    target_link_libraries(gazebo_gst_camera_plugin ${GAZEBO_LIBRARIES})
+    set(plugins_single_header ${plugins_single_header} gazebo_gst_camera_plugin)
+endif()
+
 if("${GAZEBO_VERSION}" VERSION_LESS "8.0")
     add_library(GimbalSmall2dPlugin SHARED src/GimbalSmall2dPlugin.cc)
     target_link_libraries(GimbalSmall2dPlugin ${GAZEBO_LIBRARIES})
@@ -62,3 +78,9 @@ endif()
 install(TARGETS ArduCopterIRLockPlugin DESTINATION ${GAZEBO_PLUGIN_PATH})
 install(TARGETS ArduPilotPlugin DESTINATION ${GAZEBO_PLUGIN_PATH})
 install(TARGETS ArduCopterPlugin DESTINATION ${GAZEBO_PLUGIN_PATH})
+install(TARGETS gazebo_camera_manager_plugin DESTINATION ${GAZEBO_PLUGIN_PATH})
+install(TARGETS gazebo_airspeed_plugin DESTINATION ${GAZEBO_PLUGIN_PATH})
+
+if (GSTREAMER_FOUND)
+    install(TARGETS gazebo_gst_camera_plugin DESTINATION ${GAZEBO_PLUGIN_PATH})
+endif()
