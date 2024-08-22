@@ -61,14 +61,17 @@ sudo ./install_geographiclib_datasets.sh
 
 
 ### Build ROS Workspace 
+
+1. Build the ROS workspace:
 ```bash
 cd ardupilot_gazebo/ros/
 catkin_make  #First Time
 source devel/setup.bash  
 ```
+2. Before running Gazebo, obtain the necessary files from PX4:
 
- before run gazebo we should get to files from PX4 ```libgazebo_camera_manager_plugin.so``` and ```libgazebo_camera_manager_plugin.so``` and put him to build folder
- and take  gazebo-zephyr.parm from this folder and put it in ardupilot/Tools/autotest/default_params 
+-   Copy 'libgazebo_camera_manager_plugin.so' and 'libgazebo_gst_camera_plugin.so' From PX4 to the build folder.
+-   Copy the gazebo-zephyr.parm file from this folder to ardupilot/Tools/autotest/default_params.
 
 
 
