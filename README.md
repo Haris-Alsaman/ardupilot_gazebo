@@ -106,7 +106,7 @@ source ~/.bashrc
 
 
 
-### Run Simulations with One Command
+### Run Simulations with There Commands
 You can start the Gazebo simulation and planes from anywhere with these commands:
 
 
@@ -127,7 +127,7 @@ start_3_plane.sh
 
 
 
-### Run Gazebo And 3 Planes Py One Command
+### Run Gazebo And 3 Planes With One Command
 
 ```
 all_planes.sh
