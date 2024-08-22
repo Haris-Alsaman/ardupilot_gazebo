@@ -2,15 +2,16 @@
 
 This plug-in to operate multiple fixed-wing aircraft using ROS in a virtual world that supports barcodes and cameras.
 
-## Requirements：
+## Requirements
 
-ubuntu20.04、Gazebo Classic 11、ROS-Noetic
+- **Ubuntu 20.04**
+- **Gazebo Classic 11**
+- **ROS-Noetic**
 
-![log seeking](demo.png "Logo Title Text 1")
 
 ## Setup：
 
-### Gazabo and plugin
+### Gazebo and Plugin Installation
 
 ```bash
 sudo apt-get install libgazebo11-dev	
@@ -23,80 +24,113 @@ make -j4
 sudo make install
 ```
 
-#### sources 
+### Configure Environment Variables
 
+Open the .bashrc file:
 ```
 sudo vim ~/.bashrc
+```
 
+Add the following lines to the end of the file:
 
+```
 source /usr/share/gazebo/setup.sh
 export GAZEBO_MODEL_PATH=~/ardupilot_gazebo/models:${GAZEBO_MODEL_PATH}
 export GAZEBO_MODEL_PATH=~/ardupilot_gazebo/models_gazebo:${GAZEBO_MODEL_PATH}
 export GAZEBO_RESOURCE_PATH=~/ardupilot_gazebo/worlds:${GAZEBO_RESOURCE_PATH}
 export GAZEBO_PLUGIN_PATH=~/ardupilot_gazebo/build:${GAZEBO_PLUGIN_PATH}
+```
 
+Reload the .bashrc file to apply the changes:
 
+```
 source ~/.bashrc
 ```
 
 
-### install Mavros
+### install MAVROS
 
 ```bash
 sudo apt install ros-noetic-mavros* -y 
 cd /opt/ros/noetic/lib/mavros
 sudo chmod +x install_geographiclib_datasets.sh
-./install_geographiclib_datasets.sh
+sudo ./install_geographiclib_datasets.sh
 ```
 
-### Make ROS 
 
 
 
-### Make ROS and Run Gazebo
+### Build ROS Workspace 
 ```bash
 cd ardupilot_gazebo/ros/
 catkin_make  #First Time
 source devel/setup.bash  
 ```
 
-#### before run gazebo we sholud 
+ before run gazebo we should get to files from PX4 ```libgazebo_camera_manager_plugin.so``` and ```libgazebo_camera_manager_plugin.so``` and put him to build folder
+ and take  gazebo-zephyr.parm from this folder and put it in ardupilot/Tools/autotest/default_params 
 
 
-#### Run Sim
+
+#### Run Sim With out gazebo for test
 ```bash
 sim_vehicle.py -v ArduPlane -f gazebo-zephyr --console  --out=127.0.0.1:14550 -I0 --sysid=1  
-
-sim_vehicle.py -v ArduPlane -f gazebo-zephyr --console  --out=127.0.0.1:14560 -I1 --sysid=2 
-
-sim_vehicle.py -v ArduPlane -f gazebo-zephyr --console  --out=127.0.0.1:14570 -I2 --sysid=3
 ```
 
 
 
-## For Make it Easier
+## Simplify Your Workflow
 
 ### source Ros and Scripts
+
+Open the .bashrc file:
 ```
 sudo vim ~/.bashrc
+```
 
+Add the following lines to the end of the file:
 
-export PATH=$PATH:~/ardupilot_gazebo/scripts
+```
+
 source ~/ardupilot_gazebo/ros/devel/setup.bash
+export PATH=$PATH:~/ardupilot_gazebo/scripts
 
+```
+
+
+Reload the .bashrc file to apply the changes:
+
+```
 source ~/.bashrc
 ```
 
-### run it from any where by one line
 
-1.terminal 
+
+### Run Simulations with One Command
+You can start the Gazebo simulation and planes from anywhere with these commands:
+
+
+1. Start Gazebo and Multiple Planes.
+
 ```
 start_gazebo_multi_plane.sh
 ```
 
-2.terminal
+
+2. Start Planes Individually:
+
 ```
 start_1_plane.sh
+start_2_plane.sh
+start_3_plane.sh
+```
+
+
+
+### Run Gazebo And 3 Planes Py One Command
+
+```
+all_planes.sh
 ```
 
 
